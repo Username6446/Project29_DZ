@@ -13,6 +13,10 @@ private:
 public:
     Array() : data(nullptr), size(0), capacity(0), grow(1) {}
 
+    Array(const Array<T>& other) : data(nullptr), size(0), capacity(0), grow(1) {
+        *this = other;
+    }
+
     ~Array() {
         if (data) {
             delete[] data;
@@ -122,9 +126,6 @@ public:
         return *this;
     }
 
-    Array(const Array<T>& other) : data(nullptr), size(0), capacity(0), grow(1) {
-        *this = other;
-    }
 
     void InsertAt(int index, const T& value) {
         if (index < 0 || index > size) {
